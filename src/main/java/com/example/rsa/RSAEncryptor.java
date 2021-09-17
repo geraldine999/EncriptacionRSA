@@ -16,22 +16,18 @@ public class RSAEncryptor {
         Cipher cipher = Cipher.getInstance("RSA");
         cipher.init(Cipher.ENCRYPT_MODE, publicKey);
         //paso la mk a bytes porque el cipher solo acepta ese formato
-        byte[] masterKeyBytes = masterKey.getBytes(StandardCharsets.UTF_8);
+        byte[] masterKeyBytes = masterKey.getBytes(StandardCharsets.US_ASCII);
         byte[] encryptedMasterKeyBytes = cipher.doFinal(masterKeyBytes);
         return encryptedMasterKeyBytes;
     }
 
-    public String bytesToASCIIConverter(byte[] messageBytes){
-        String messageInASCII = new String(messageBytes, StandardCharsets.US_ASCII);
-        return  messageInASCII;
-    }
 
 
     public String decodeMasterKeyWithRsa(byte[] encryptedMasterKeyBytes, PrivateKey privateKey) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
         Cipher decryptCipher = Cipher.getInstance("RSA");
         decryptCipher.init(Cipher.DECRYPT_MODE, privateKey);
         byte[] decodedMasterKeyBytes = decryptCipher.doFinal(encryptedMasterKeyBytes);
-        String decodedMasterKey = new String(decodedMasterKeyBytes, StandardCharsets.UTF_8);
+        String decodedMasterKey = new String(decodedMasterKeyBytes, StandardCharsets.US_ASCII);
         return decodedMasterKey;
     }
 

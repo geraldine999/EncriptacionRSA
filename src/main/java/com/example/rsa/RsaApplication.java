@@ -61,14 +61,14 @@ public class RsaApplication {
 
 
 
-		//encripto la master key
+		//encripto la master key como un array de bytes en ascii
 		byte[] encodedMK = rsaEncryptor.encryptMasterKeyWithRsa(masterKey, publicKey);
-		//la masterkey encriptada la paso a ASCII para mandarla por la api rest
-		String masterKeyInASCII = rsaEncryptor.bytesToASCIIConverter(encodedMK);
+
 
 		System.out.println("MASTERKEY EN ASCII");
-		System.out.println(masterKeyInASCII);
+		System.out.println(encodedMK);
 		System.out.println("-----------------------------------");
+
 
 		//descrifro la master key
 		String decodedMK = rsaEncryptor.decodeMasterKeyWithRsa(encodedMK, privateKey);
