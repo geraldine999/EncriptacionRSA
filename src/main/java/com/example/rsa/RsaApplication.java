@@ -4,15 +4,8 @@ package com.example.rsa;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import javax.crypto.*;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.security.*;
-import java.security.spec.*;
-import java.util.Base64;
+
 
 @SpringBootApplication
 public class RsaApplication {
@@ -57,7 +50,6 @@ public class RsaApplication {
 		PublicKey publicKey = PublicKeyReader.get("public.key");
 		System.out.println(publicKey.getFormat());
 
-		//TODO AVERIGUAR EN QUE FORMATO ESTAN LOS ARCHIVOS DE LAS KEYS
 
 
 
